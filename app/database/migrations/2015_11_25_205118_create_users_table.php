@@ -16,6 +16,9 @@ class CreateUsersTable extends Migration {
 
 					 $table->increments('id');
 					 $table->char('username',50);
+					 $table->char('first_name',100);
+					 $table->char('last_name',100);
+					 $table->integer('phn_number');
 					 $table->char('email',255);
 					 $table->char('password',255);
 					 $table->longText('library_name');

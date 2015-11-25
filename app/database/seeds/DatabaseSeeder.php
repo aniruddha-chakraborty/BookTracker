@@ -13,13 +13,15 @@ class DatabaseSeeder extends Seeder {
 
 	public function run()
 	{
-		Eloquent::unguard();
-
+	//	Eloquent::unguard();
+		$this->user();
 	}
 
 	public function user()
 	{
 		//$usersTable = \Models\User;
+		$faker = Faker\Factory::create();
+		echo $faker->name;
 		
 	}
 
