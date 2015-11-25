@@ -10,10 +10,22 @@ class CreateUsersTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		//
-	}
+	 public function up()
+	 {
+			 Schema::create('users_table',function (Blueprint $table){
+
+					 $table->increments('id');
+					 $table->char('username',50);
+					 $table->char('email',255);
+					 $table->char('password',255);
+					 $table->longText('library_name');
+					 $table->char('district',20);
+					 $table->char('zilla');
+					 $table->longText('address');
+					 $table->timestamps();
+
+			 });
+	 }
 
 	/**
 	 * Reverse the migrations.
@@ -22,7 +34,8 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('uses_table');
+
 	}
 
 }
