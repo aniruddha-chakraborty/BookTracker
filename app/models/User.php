@@ -1,5 +1,5 @@
 <?php
-namespace User;
+namespace Model;
 
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;

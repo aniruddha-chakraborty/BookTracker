@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration {
 					 $table->char('email',255);
 					 $table->char('password',255);
 					 $table->longText('library_name');
-					 $table->char('district',20);
-					 $table->char('zilla');
+					 $table->integer('zilla');
+					 $table->integer('place');
 					 $table->longText('address');
 					 $table->timestamps();
 
