@@ -15,6 +15,7 @@ class CreatePlaceTable extends Migration {
 		Schema::create('place',function (Blueprint $table){
 
 				$table->increments('id');
+				$table->integer('zilla_id');
 				$table->char('place_name',255);
 				$table->timestamps();
 
@@ -28,7 +29,7 @@ class CreatePlaceTable extends Migration {
 	 */
 	public function down()
 	{
-		Shema::drop('place_name');
+		Shema::drop('place');
 	}
 
 }

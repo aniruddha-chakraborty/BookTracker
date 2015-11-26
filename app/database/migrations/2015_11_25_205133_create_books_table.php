@@ -16,7 +16,7 @@ class CreateBooksTable extends Migration {
 
 				$table->increments('id');
 				$table->longText('book_name');
-				$table->integer('writer_id');
+				$table->longText('writer_name');
 				$table->integer('shop_id');
 				$table->timestamps();
 
