@@ -15,3 +15,16 @@ Route::get('/user/index', function()
 {
 	return View::make('user.index');
 });
+
+Route::group(['before' => 'guest'] , function(){
+
+			Route::get('/login',['uses'=>'UserController@login' , 'as' => 'login']);
+			Route::get('/register',['uses' => 'UserController@register','as' => 'register']);
+
+});
+
+Route::group(['before' => 'auth'],function(){
+
+			Route::get('/',['uses' => 'UserController@index','as'=>'index']);
+
+}]);
