@@ -151,12 +151,12 @@
         <!-- Right Section Start -->
         <div class="right-sec">
             <!-- Right Section Header Start -->
-						@header('topBar')
+						@section	('topBar')
 						<header>
                 <!-- User Section Start -->
                 <div class="user">
                     <figure>
-                        <a href="#"><img src="assets/images/avatar1.jpg" alt="Adminise" /></a>
+                        <a href="#"><img src="/assets/images/avatar1.jpg" alt="Adminise" /></a>
                     </figure>
                     <div class="welcome">
                         <p>Welcome</p>
@@ -294,11 +294,9 @@
             <!-- Right Section Header End -->
             <!-- Content Section Start -->
             <div class="content-section">
-
 							@section('content')
-								
-							@show
 
+							@show
             </div>
             <!-- Content Section End -->
         </div>
@@ -310,5 +308,4 @@
 
 </body>
 
-<!-- Mirrored from www.extracoding.com/demo/adminise/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Jun 2014 05:50:02 GMT -->
 </html>

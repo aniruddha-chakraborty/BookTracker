@@ -5,3 +5,11 @@
 		<title>Ticket list | Cashbox</title>
 
 @stop
+
+@section('content')
+		@parent
+
+
+
+		@stop
+@stop
