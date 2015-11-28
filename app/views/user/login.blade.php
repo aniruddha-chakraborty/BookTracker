@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Adminise - Clean And Corporate Admin Panel Template</title>
 <!--// Stylesheets //-->
-<link href="assets/css/style.css" rel="stylesheet" media="screen" />
-<link href="assets/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/assets/css/style.css" rel="stylesheet" media="screen" />
+<link href="/assets/css/bootstrap.css" rel="stylesheet" media="screen" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <script type="text/javascript" src="/assets/js/jquery.js"></script>
 <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
@@ -21,21 +21,17 @@
 <body>
 <!-- Wrapper Start -->
 <div class="loginwrapper">
-	<span class="circle"></span>
 	<div class="loginone">
-    	<header>
-        	<a href="dashboard1.html"><img src="/assets/images/logo.png" alt="" /></a>
-            <p>Enter your credentials to login to your account</p>
-        </header>
-        <form>
+
+        <form action="{{ URL::route('postLogin') }}" method="POST">
 
             <div class="username">
-        		<input type="text" class="form-control" placeholder="Enter your username" />
+        		<input type="text" name="email" class="form-control" placeholder="Enter your Email" />
                 <i class="glyphicon glyphicon-user"></i>
             </div>
 
             <div class="password">
-            	<input type="password" class="form-control" placeholder="Enter your password" />
+            	<input type="password" name="password" class="form-control" placeholder="Enter your password" />
                 <i class="glyphicon glyphicon-lock"></i>
             </div>
 
@@ -43,8 +39,7 @@
 
         </form>
         <footer>
-        	<a href="#" class="forgot pull-left">I forgot my password</a>
-            <a href="#" class="register pull-right">Create account</a>
+            <a href="{{ URL::route('register') }}" class="register pull-right">Create account</a>
             <div class="clear"></div>
         </footer>
     </div>

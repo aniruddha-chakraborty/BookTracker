@@ -1,6 +1,9 @@
 <?php
 namespace Model;
 
+use Eloquent;
+use DB;
+
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
@@ -25,15 +28,40 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password', 'remember_token');
 
 
-	public function register()
+	public function register($username,$first_name,$last_name,$phn_number,$email,$password,$library)
 	{
 
+		$insert = DB::table('users_table')->insert([
+						'username' 			=> $username,
+						'first_name'		=> $first_name,
+						'last_name'	 		=> $last_name,
+						'phn_number'		=> $phn_number,
+						'email'					=> $email,
+						'password'			=> $password,
+						'library_name'  => $library
+		]);
+
+			if ( $insert === true ) {
+				# code...
+					return true;
+
+				} else {
+
+					return false;
+			}
 
 	}
 
 	public function login()
 	{
-		
+
 	}
+
+	public function userId($email, $password)
+	{
+				return DB::select("SELECT `id` FROM `users_table` WHERE `email` = ? AND `password` = ?",[$email,$password]);
+				
+	}
+
 
 }
