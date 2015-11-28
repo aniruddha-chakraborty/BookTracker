@@ -1,5 +1,7 @@
 <?php
 namespace Books;
+use Eloquent;
+use DB;
 
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
@@ -23,5 +25,14 @@ class Books extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
+
+
+
+	public function books()
+	{
+
+			return $users = DB::table('books')->paginate(15);
+
+	}
 
 }

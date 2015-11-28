@@ -1,6 +1,4 @@
 <?php
-use Eloquent;
-use DB;
 
 class UserController extends BaseController {
 
@@ -20,7 +18,9 @@ class UserController extends BaseController {
 
 			public function index()
 			{
-
+					$book = new \Books\Books;
+					print_r($book->books());
+					//return View::make('user.index');
 			}
 
 			public function login()
@@ -52,7 +52,7 @@ class UserController extends BaseController {
 
 							} else {
 
-							$User = new Model\User;
+							$User = new \Model\User;
 
 							$username 		= Input::get('username');
 							$first_name 	= Input::get('first_name');
@@ -88,16 +88,22 @@ class UserController extends BaseController {
 					if ($validator->fails()) {
 						# code...
 							return Redirect::route('login')->withErrors($validator)->withInput();
+
 					} else {
 
-							$User = new Model\User;
+							$User = new \Model\User;
 
 							$email = Input::get('email');
 							$password  = md5(Input::get('password'));
 
-							$userId = $User->userId($email, $password)[0]->id;
+							$userId = $User->userId($email, $password);
 
-							$auth = Auth::loginUsingId($userId, $remember);
+								if ($userId === false) {
+									# code...
+										return Redirect::route('login');
+								}
+
+							$auth = Auth::loginUsingId($userId, 0);
 
 								if ($auth) {
 									# code...
@@ -110,4 +116,14 @@ class UserController extends BaseController {
 					}
 
 		}
+
+		public function logOut()
+		{
+					//session_start();
+					//session_destroy();
+					Auth::logout();
+					return Redirect::route('login');
+		}
+
+
 }

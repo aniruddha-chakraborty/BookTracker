@@ -59,8 +59,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function userId($email, $password)
 	{
-				return DB::select("SELECT `id` FROM `users_table` WHERE `email` = ? AND `password` = ?",[$email,$password]);
-				
+				$data = DB::select("SELECT `id` FROM `users_table` WHERE `email` = ? AND `password` = ?",[$email,$password]);
+
+					if (!empty($data[0]->id)) {
+						# code...
+							return $data[0]->id;
+
+						} else {
+
+							return false;
+					}
 	}
 
 
