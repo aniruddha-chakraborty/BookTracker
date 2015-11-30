@@ -28,10 +28,10 @@ class Books extends Eloquent implements UserInterface, RemindableInterface {
 
 
 
-	public function books()
+	public function books($userId)
 	{
 
-			return $users = DB::table('books')->paginate(15);
+			return $users = DB::table('books')->where('shop_id',$userId)->paginate(15);
 
 	}
 

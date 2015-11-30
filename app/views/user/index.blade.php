@@ -12,7 +12,6 @@
 		<div class="container-liquid">
 				<div class="row">
 
-
 					<div class="col-xs-12">
 							<div class="sec-box">
 									<a class="closethis">Close</a>
@@ -26,59 +25,23 @@
 															<thead>
 																	<tr>
 																			<th>#</th>
-																			<th>First Name</th>
-																			<th>Last Name</th>
-																			<th>Username</th>
+																			<th>Book Name</th>
+																			<th>Writter Name</th>
+																			<th> Action </th>
 																	</tr>
 															</thead>
 															<tbody>
-																	<tr>
-																			<td>1</td>
-																			<td>Mark</td>
-																			<td>Otto</td>
-																			<td>@mdo</td>
+																	@foreach ( $books as $book )
+																	<tr id="name" list="<?php echo $book->id;?>">
+																			<td>{{ $count++ }}</td>
+																			<td>{{ $book->book_name }}</td>
+																			<td>{{ $book->writer_name }}</td>
+																			<td><button type="button" class="btn btn-info">Edit</button> <button type="button" class="btn btn-danger" id="delete_book">Delete</button></td>
 																	</tr>
-																	<tr>
-																			<td>2</td>
-																			<td>Jacob</td>
-																			<td>Thornton</td>
-																			<td>@fat</td>
-																	</tr>
-																	<tr>
-																			<td>3</td>
-																			<td colspan="2">Larry the Bird</td>
-																			<td>@twitter</td>
-																	</tr>
-																	<tr>
-																			<td>4</td>
-																			<td>Mark</td>
-																			<td>Otto</td>
-																			<td>@mdo</td>
-																	</tr>
-																	<tr>
-																			<td>5</td>
-																			<td>Jacob</td>
-																			<td>Thornton</td>
-																			<td>@fat</td>
-																	</tr>
-																	<tr>
-																			<td>6</td>
-																			<td colspan="2">Larry the Bird</td>
-																			<td>@twitter</td>
-																	</tr>
-																	<tr>
-																			<td>7</td>
-																			<td>Jacob</td>
-																			<td>Thornton</td>
-																			<td>@fat</td>
-																	</tr>
-																	<tr>
-																			<td>8</td>
-																			<td colspan="2">Larry the Bird</td>
-																			<td>@twitter</td>
-																	</tr>
+																	@endforeach
 															</tbody>
 													</table>
+													<center>{{ $books->links() }}</center>
 											</section>
 									</div>
 							</div>

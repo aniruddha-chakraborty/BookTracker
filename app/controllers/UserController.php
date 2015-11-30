@@ -19,8 +19,11 @@ class UserController extends BaseController {
 			public function index()
 			{
 					$book = new \Books\Books;
-					print_r($book->books());
-					//return View::make('user.index');
+					$userId = Auth::user()->id;
+					$allBooks = $book->books($userId);
+					$count = 1;
+
+					return View::make('user.index',['books' => $allBooks,'count'=>$count]);
 			}
 
 			public function login()
