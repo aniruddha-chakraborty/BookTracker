@@ -99,7 +99,14 @@ class Books extends Eloquent implements UserInterface, RemindableInterface {
 
 						return false;
 					}
-					
+
+		}
+
+		public function searchEngine($string)
+		{
+
+				$search = DB::select("SELECT * FROM `books` WHERE `book_name` ");
+
 		}
 
 

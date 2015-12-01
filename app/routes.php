@@ -17,6 +17,8 @@ Route::get('/user/index', function()
 });
 */
 
+Route::get('/api/search/{string?}',['uses' => 'ApiController@searchBooks','as' => 'search']);
+
 Route::group(['before' => 'guest'], function(){
 
 			Route::get('/login',['uses'=>'UserController@login' , 'as' => 'login']);
@@ -24,7 +26,6 @@ Route::group(['before' => 'guest'], function(){
 			Route::post('/postRegister',['uses' => 'UserController@postRegister' , 'as' => 'postRegister']);
 			Route::post('/postLogin',['uses' => 'UserController@postLogin' , 'as' => 'postLogin']);
 
-			Route::get('/api/search/{string?}',['uses' => 'ApiController@search','as' => 'search']);
 });
 
 Route::group(['before' => 'auth'] , function(){
