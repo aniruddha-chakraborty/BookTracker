@@ -18,6 +18,27 @@
 									<header>
 											<h2 class="heading">Condensed Table</h2>
 									</header>
+
+
+									<?php
+											$errorShow = '';
+											if ($errors->has()) {
+
+														foreach ($errors->all() as $error){
+																$errorShow .= $error .',';
+														}
+												$errorShow = rtrim($errorShow,',');
+											}
+									?>
+									@if(!empty($errorShow))
+											<a class="togglethis">Toggle</a>
+											<div class="alert alert-danger">
+											<strong>Error!</strong>
+														{{ $errorShow }}
+											</div>
+									@endif
+
+
 									<div class="contents">
 											<a class="togglethis">Toggle</a>
 											<section>

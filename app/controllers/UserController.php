@@ -153,7 +153,7 @@ class UserController extends BaseController {
 		{
 				$validator = Validator::make(Input::all(),[
 								'book_name'  => 'required',
-								'writter_name' => 'required'
+								'writer_name' => 'required'
 				]);
 
 					// Take book ID from
@@ -162,9 +162,69 @@ class UserController extends BaseController {
 					if ($validator->fails()) {
 						# code...
 							return Redirect::route('edit-books',['bookId' => $bookId])->withErrors($validator)->withInput();
+
+						} else {
+
+							$userId = Auth::user()->id;
+
+							// read user input
+							$bookName = Input::get('book_name');
+							$writerName = Input::get('writer_name');
+
+							$Book = new \Books\Books;
+							$update = $Book->updateBook($userId,$bookId,$bookName,$writerName);
+
+								if ($update === true) {
+									# code...
+											return Redirect::route('edit-books',['bookId' => $bookId])->with('success','Your book information is updated!');
+
+										} else {
+
+											return Redirect::route('edit-books',['bookId' => $bookId])->with('failed',' You did\'t change anything!');
+								}
+
 					}
 
 
+		}
+
+
+		public function addbooks()
+		{
+				return View::make('user.addbooks');
+		}
+
+		public function postBooks()
+		{
+
+				$validator = Validator::make(Input::all(),[
+							'book_name' 	=> 'required',
+							'writer_name'	=> 'required'
+				]);
+
+						if ($validator->fails()) {
+							# code...
+									return Redirect::route('add-books')->withErrors($validator)->withInput();
+
+								} else {
+
+									$bookName 			= Input::get('book_name');
+									$writerName 		= Input::get('writer_name');
+									$userId 				= Auth::user()->id;
+
+									$Book = new \Books\Books;
+									$add  = $Book->addBooks($bookName,$writerName,$userId);
+
+										if ($add === true) {
+											# code...
+												return Redirect::route('add-books')->with('success','Your Book is now added to your list!!');
+
+											} else {
+
+												return Redirect::route('add-books')->with('failed','There was a problem in the Add process, please try again');
+										}
+
+						}
 		}
 
 

@@ -9,10 +9,7 @@
 @section('content')
 		@parent
 
-    <div class="container-liquid">
-
-
-
+		<div class="container-liquid">
         <div class="row">
             <div class="col-xs-12">
                 <div class="sec-box">
@@ -42,7 +39,7 @@
 										@if(Session::has('failed'))
 										<div class="alert alert-danger">
 										<strong>Oh snap!</strong>
-												something!!
+												Something has ocurred!!
 										</div>
 
 										@endif
@@ -65,23 +62,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-																<form action="{{ URL::route('postEditBooks') }}" method="POST">
+																<form action="{{ URL::route('postBooks') }}" method="POST">
                                     <tr>
                                         <td class="col-md-4">Book Name</td>
-                                        <td class="col-md-8"><input type="text" name="book_name" placeholder="Book name" class="form-control" value="{{ $bookName }}"></td>
+                                        <td class="col-md-8"><input type="text" name="book_name" placeholder="Book name" class="form-control"></td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-4">Writter name</td>
-                                        <td class="col-md-8"><textarea rows="3" name="writer_name" placeholder="writer name" class="form-control">{{ $writerName }}</textarea></td>
+                                        <td class="col-md-8"><textarea rows="3" name="writer_name" placeholder="writer name" class="form-control"></textarea></td>
 
-                                    </tr>
-																		<tr>
-                                        	<input type="hidden" name="_book_id" value="{{ $bookId }}">
                                     </tr>
 
                                     <tr>
                                         <td class="col-md-4">Submit</td>
-                                        <td class="col-md-8"><button type="submit" class="btn btn-danger" id="delete_book" />Submit</button></td>
+                                        <td class="col-md-8"><button type="submit" class="btn btn-danger" />Add</button></td>
                                     </tr>
 
 																		</form>
@@ -96,6 +90,5 @@
         </div>
         <!-- Row End -->
     </div>
-
 		@stop
 @stop
