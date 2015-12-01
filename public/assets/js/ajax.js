@@ -1,5 +1,5 @@
-$('button#delete_book').click(function(){
+function delete(){
 
-    alert('wwwpwpw');
+    alert('wowow');
 
-});
+};

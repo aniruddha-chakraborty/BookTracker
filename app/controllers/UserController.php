@@ -122,11 +122,51 @@ class UserController extends BaseController {
 
 		public function logOut()
 		{
-					//session_start();
-					//session_destroy();
+
 					Auth::logout();
 					return Redirect::route('login');
 		}
+
+		public function editBooks($bookId)
+		{
+				$userId = Auth::user()->id;
+				$Book = new \Books\Books();
+				$checkBookisAdmin = $Book->bookAdmin($userId,$bookId);
+
+			if ($checkBookisAdmin == true) {
+				# code...
+					$getBookInfo = $Book->getBookInfo($userId,$bookId);
+
+					$bookName = $getBookInfo[0]->book_name;
+					$writerName = $getBookInfo[0]->writer_name;
+
+					return View::make('user.editbooks',['bookName' => $bookName , 'writerName' => $writerName,'bookId' => $bookId]);
+
+				} else {
+
+					return Redirect::route('index');
+			}
+
+		}
+
+		public function postEditBooks()
+		{
+				$validator = Validator::make(Input::all(),[
+								'book_name'  => 'required',
+								'writter_name' => 'required'
+				]);
+
+					// Take book ID from
+					$bookId = Input::get('_book_id');
+
+					if ($validator->fails()) {
+						# code...
+							return Redirect::route('edit-books',['bookId' => $bookId])->withErrors($validator)->withInput();
+					}
+
+
+		}
+
 
 
 }

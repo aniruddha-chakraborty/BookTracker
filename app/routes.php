@@ -29,5 +29,7 @@ Route::group(['before' => 'auth'] , function(){
 
 			Route::get('/',['uses' => 'UserController@index','as'=>'index']);
 			Route::get('/logout',['uses' => 'UserController@logOut' , 'as' => 'logout']);
+			Route::get('/edit-books/{book_id}',['uses' => 'UserController@editBooks' , 'as' => 'edit-books']);
+			Route::post('/postEditBooks',['uses' => 'UserController@postEditBooks','as' => 'postEditBooks']);
 
 });

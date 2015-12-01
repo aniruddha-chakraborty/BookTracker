@@ -32,11 +32,11 @@
 															</thead>
 															<tbody>
 																	@foreach ( $books as $book )
-																	<tr id="name" list="<?php echo $book->id;?>">
+																	<tr id="name_<?php echo $book->id;?>">
 																			<td>{{ $count++ }}</td>
 																			<td>{{ $book->book_name }}</td>
 																			<td>{{ $book->writer_name }}</td>
-																			<td><button type="button" class="btn btn-info">Edit</button> <button type="button" class="btn btn-danger" id="delete_book">Delete</button></td>
+																			<td><a href="/edit-books/{{ $book->id }}" class="btn btn-info">Edit</a> <button type="button" class="btn btn-danger" onclick="delete();" id="delete_book" />Delete</button></td>
 																	</tr>
 																	@endforeach
 															</tbody>
