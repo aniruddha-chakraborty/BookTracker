@@ -4,7 +4,7 @@ class ApiController extends BaseController {
 
 
 
-      public function searchBooks($string = null)
+      public function searchBooks($string = null,$limit = null)
       {
 
         if ($string == '') {
@@ -20,7 +20,14 @@ class ApiController extends BaseController {
             $Book = new \Books\Books;
 
             $searchEngine = $Book->searchEngine($string);
-            
+
+              foreach ($searchEngine as $value) {
+                # code...
+                  echo $value->book_name;
+                  echo '<pre>';
+              }
+
+
         }
 
 

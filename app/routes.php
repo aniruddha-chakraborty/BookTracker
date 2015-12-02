@@ -17,7 +17,7 @@ Route::get('/user/index', function()
 });
 */
 
-Route::get('/api/search/{string?}',['uses' => 'ApiController@searchBooks','as' => 'search']);
+Route::get('/api/search/{string?}/{limit?}',['uses' => 'ApiController@searchBooks','as' => 'search']);
 
 Route::group(['before' => 'guest'], function(){
 
@@ -36,5 +36,7 @@ Route::group(['before' => 'auth'] , function(){
 			Route::post('/postEditBooks',['uses' => 'UserController@postEditBooks','as' => 'postEditBooks']);
 			Route::get('/add-books',['uses' => 'UserController@addbooks' , 'as' => 'add-books']);
 			Route::post('/post-books',['uses' => 'UserController@postBooks','as' => 'postBooks']);
+			Route::get('/settings',['uses' => 'UserController@settings' , 'as' => 'settings']);
+			Route::post('/settings',['uses' => 'UserController@postSettings','as' => 'postSettings']);
 
 });
